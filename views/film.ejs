@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+    <header>
+        <h1>Ficha</h1>
+        <nav>
+            <a href="/">Inicio</a> | <a href="/search">Buscar</a>
+        </nav>
+    </header>
+
+    <% if(peli == null){ %>
+        <p>No existe esa pelicula</p>
+    <% } else { %>
+        <div class="ficha">
+            <h2><%= peli.Title %></h2>
+            <p><b>Año:</b> <%= peli.Year %></p>
+            <p><b>Clasificación:</b> <%= peli.Rated %></p>
+            <p><b>Estreno:</b> <%= peli.Released %></p>
+            <p><b>Duración:</b> <%= peli.Runtime %></p>
+            <p><b>Genero:</b> <%= peli.Genre %></p>
+            <p><b>Director:</b> <%= peli.Director %></p>
+            <p><b>Actores:</b> <%= peli.Actors %></p>
+            <p><b>Sinopsis:</b> <%= peli.Plot %></p>
+            <p><b>Idioma:</b> <%= peli.Language %></p>
+            <p><b>Pais:</b> <%= peli.Country %></p>
+            <p><b>Premios:</b> <%= peli.Awards %></p>
+            <p><b>Valoración:</b> <%= peli.imdbRating %> (<%= peli.imdbVotes %> votos)</p>
+        </div>
+    <% } %>
+</body>
+</html>

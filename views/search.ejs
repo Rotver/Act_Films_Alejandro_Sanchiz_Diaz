@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar</title>
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+    <header>
+        <h1>Buscar pelicula</h1>
+        <nav>
+            <a href="/">Inicio</a> | <a href="/search">Buscar</a>
+        </nav>
+    </header>
+
+    <!-- formulario para buscar -->
+    <form action="/search" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" value="<%= busqueda %>">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <% if(results !== null){ %>
+        <h2>Resultados</h2>
+        <% if(results.length == 0){ %>
+            <p>No se han encontrado resultados</p>
+        <% } else { %>
+            <ul>
+                <% results.forEach(function(r){ %>
+                    <li><a href="/film/<%= encodeURIComponent(r.titulo) %>"><%= r.titulo %></a> (<%= r.info.Year %>)</li>
+                <% }) %>
+            </ul>
+        <% } %>
+    <% } %>
+</body>
+</html>

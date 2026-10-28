@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Peliculas</title>
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+    <header>
+        <h1>Listado de peliculas</h1>
+        <nav>
+            <a href="/">Inicio</a> | <a href="/search">Buscar</a>
+        </nav>
+    </header>
+
+    <!-- listado de todas las pelis -->
+    <div class="lista">
+        <ul>
+            <% for(let titulo in films){ %>
+                <li>
+                    <a href="/film/<%= encodeURIComponent(titulo) %>"><%= titulo %></a> - <%= films[titulo].Year %>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>
