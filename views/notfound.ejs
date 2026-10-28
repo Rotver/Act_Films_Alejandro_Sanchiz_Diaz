@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No encontrada - Google Películas</title>
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body class="results-page">
+    <%- include("partials/header", { q: busqueda }) %>
+
+    <main class="results">
+        <div class="not-found">
+            <img src="googlelogo.png" alt="Google" class="logo-notfound">
+            <h2>PELÍCULA '<%= busqueda.toUpperCase() %>' NO ENCONTRADA</h2>
+            <p>No hemos encontrado ninguna película con ese nombre.</p>
+            <p><a href="/">Volver al buscador</a></p>
+        </div>
+    </main>
+</body>
+</html>

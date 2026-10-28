@@ -2,26 +2,26 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Peliculas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Películas</title>
     <link rel="stylesheet" href="/app.css">
 </head>
-<body>
-    <header>
-        <h1>Listado de peliculas</h1>
-        <nav>
-            <a href="/">Inicio</a> | <a href="/search">Buscar</a>
-        </nav>
-    </header>
+<body class="home-page">
+    <main class="google-home">
+        <img src="/img/googlelogo.png" alt="Google" class="logo-home">
+        <form action="/search" method="GET" class="google-form">
+            <input type="text" name="q" placeholder="Buscar películas..." autofocus autocomplete="off" required>
+            <div class="google-buttons">
+                <button type="submit">Buscar con Google</button>
+                <a href="/search?q=a" class="lucky-button">Voy a tener suerte</a>
+            </div>
+        </form>
 
-    <!-- listado de todas las pelis -->
-    <div class="lista">
-        <ul>
-            <% for(let titulo in films){ %>
-                <li>
-                    <a href="/film/<%= encodeURIComponent(titulo) %>"><%= titulo %></a> - <%= films[titulo].Year %>
-                </li>
-            <% } %>
-        </ul>
-    </div>
+        <p class="home-hint">Busca entre <%= films ? Object.keys(films).length : 0 %> películas: Avatar, 300, I Am Legend...</p>
+    </main>
+
+    <footer class="home-footer">
+        <span>Actividad Films - Node JS + Express + EJS</span>
+    </footer>
 </body>
 </html>

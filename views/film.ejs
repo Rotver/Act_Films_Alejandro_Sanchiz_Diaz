@@ -2,35 +2,36 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title><%= titulo %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= titulo %> - Google Películas</title>
     <link rel="stylesheet" href="/app.css">
 </head>
-<body>
-    <header>
-        <h1>Ficha</h1>
-        <nav>
-            <a href="/">Inicio</a> | <a href="/search">Buscar</a>
-        </nav>
-    </header>
+<body class="results-page">
 
-    <% if(peli == null){ %>
-        <p>No existe esa pelicula</p>
-    <% } else { %>
-        <div class="ficha">
+    <%- include("partials/header", { q: titulo }) %>
+
+    <main class="results">
+        <article class="result ficha">
             <h2><%= peli.Title %></h2>
-            <p><b>Año:</b> <%= peli.Year %></p>
-            <p><b>Clasificación:</b> <%= peli.Rated %></p>
-            <p><b>Estreno:</b> <%= peli.Released %></p>
-            <p><b>Duración:</b> <%= peli.Runtime %></p>
-            <p><b>Genero:</b> <%= peli.Genre %></p>
-            <p><b>Director:</b> <%= peli.Director %></p>
-            <p><b>Actores:</b> <%= peli.Actors %></p>
-            <p><b>Sinopsis:</b> <%= peli.Plot %></p>
-            <p><b>Idioma:</b> <%= peli.Language %></p>
-            <p><b>Pais:</b> <%= peli.Country %></p>
-            <p><b>Premios:</b> <%= peli.Awards %></p>
-            <p><b>Valoración:</b> <%= peli.imdbRating %> (<%= peli.imdbVotes %> votos)</p>
-        </div>
-    <% } %>
+            <p class="result-meta"><strong>Año:</strong> <%= peli.Year %> · <strong>Clasificación:</strong> <%= peli.Rated %></p>
+            <p><strong>Estreno:</strong> <%= peli.Released %></p>
+            <p><strong>Duración:</strong> <%= peli.Runtime %></p>
+            <p><strong>Género:</strong> <%= peli.Genre %></p>
+            <p><strong>Director:</strong> <%= peli.Director %></p>
+            <p><strong>Actores:</strong> <%= peli.Actors %></p>
+            <p><strong>Sinopsis:</strong> <%= peli.Plot %></p>
+            <p><strong>Idioma:</strong> <%= peli.Language %></p>
+            <p><strong>País:</strong> <%= peli.Country %></p>
+            <p><strong>Premios:</strong> <%= peli.Awards %></p>
+            <p><strong>Valoración:</strong> <%= peli.imdbRating %> (<%= peli.imdbVotes %> votos)</p>
+
+
+            <div class="gallery">
+                <% peli.Images.forEach(function(img, i){ %>
+                    <img src="<%= img %>" alt="Imagen <%= i + 1 %> de <%= peli.Title %>" loading="lazy">
+                <% }) %>
+            </div>
+        </article>
+    </main>
 </body>
 </html>

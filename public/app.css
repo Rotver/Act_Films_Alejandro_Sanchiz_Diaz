@@ -1,48 +1,272 @@
+/* ===== Estilos generales ===== */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f9f9f9;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: #202124;
+    background-color: #ffffff;
 }
 
-header {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 15px;
-}
-
-h1 {
-    font-size: 24px;
-}
-
-nav a {
-    color: #0066cc;
+a {
+    color: #1a0dab;
     text-decoration: none;
 }
 
-nav a:hover {
+a:hover {
     text-decoration: underline;
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
+/* ===== Página principal (estilo Google) ===== */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-li {
-    padding: 4px 0;
+.google-home {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
 }
 
-form {
-    margin-bottom: 15px;
+.logo-home {
+    width: 272px;
+    max-width: 80%;
+    margin-bottom: 28px;
 }
 
+/* Caja de búsqueda redondeada como la de Google */
+.google-form {
+    width: 100%;
+    max-width: 584px;
+}
+
+.google-form input[type="text"] {
+    width: 100%;
+    padding: 14px 22px;
+    font-size: 16px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    outline: none;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.12);
+}
+
+.google-form input[type="text"]:focus {
+    box-shadow: 0 1px 10px rgba(32, 33, 36, 0.28);
+}
+
+.google-buttons {
+    margin-top: 26px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.google-buttons button,
+.lucky-button {
+    padding: 10px 18px;
+    font-size: 14px;
+    color: #3c4043;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.google-buttons button:hover,
+.lucky-button:hover {
+    border-color: #dadce0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.home-hint {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #70757a;
+}
+
+.home-footer {
+    padding: 15px;
+    font-size: 13px;
+    color: #70757a;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+/* ===== Cabecera de resultados ===== */
+.google-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 16px 24px;
+    border-bottom: 1px solid #ebebeb;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 10;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-small {
+    width: 110px;
+    height: auto;
+}
+
+.google-form-small {
+    flex: 1;
+    max-width: 620px;
+    display: flex;
+    gap: 10px;
+}
+
+.google-form-small input[type="text"] {
+    flex: 1;
+    padding: 11px 20px;
+    font-size: 15px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    outline: none;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.12);
+}
+
+.google-form-small input[type="text"]:focus {
+    box-shadow: 0 1px 10px rgba(32, 33, 36, 0.28);
+}
+
+.google-form-small button {
+    padding: 10px 18px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #1a73e8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.google-form-small button:hover {
+    background-color: #1765cc;
+}
+
+/* ===== Resultados de búsqueda ===== */
+.results {
+    max-width: 750px;
+    padding: 20px 24px 60px;
+}
+
+.results-count {
+    font-size: 13px;
+    color: #70757a;
+    margin-bottom: 20px;
+}
+
+.result {
+    margin-bottom: 30px;
+}
+
+.result h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.result-url {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: #0d652d;
+}
+
+.result-meta {
+    font-size: 14px;
+    color: #4d5156;
+}
+
+.result-plot {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4d5156;
+}
+
+/* Galería con todas las imágenes de la película */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    background-color: #f8f9fa;
+}
+
+/* ===== Ficha de película ===== */
 .ficha {
     background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    padding: 20px;
 }
 
-.lista {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ddd;
+.ficha p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+/* ===== Película no encontrada ===== */
+.not-found {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.logo-notfound {
+    width: 180px;
+    max-width: 60%;
+    margin-bottom: 25px;
+}
+
+.not-found h2 {
+    font-size: 22px;
+    color: #202124;
+}
+
+.not-found p {
+    color: #4d5156;
+}
+
+/* ===== Diseño responsive ===== */
+@media (max-width: 600px) {
+    .google-header {
+        gap: 10px;
+        padding: 12px 14px;
+    }
+
+    .logo-small {
+        width: 80px;
+    }
+
+    .google-form-small {
+        flex-basis: 100%;
+    }
+
+    .results {
+        padding: 16px;
+    }
 }

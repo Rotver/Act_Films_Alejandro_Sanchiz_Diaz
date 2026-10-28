@@ -1,0 +1,12 @@
+
+<header class="google-header">
+    <a href="/" class="logo-link" title="Ir a la página principal">
+        <img src="/img/googlelogo.png" alt="Google" class="logo-small">
+    </a>
+
+    <form action="/search" method="GET" class="google-form-small">
+        <input type="text" name="q" value="<%= typeof q !== 'undefined' ? q : '' %>"
+               placeholder="Buscar películas..." autocomplete="off">
+        <button type="submit">Buscar</button>
+    </form>
+</header>

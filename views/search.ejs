@@ -2,35 +2,41 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Buscar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= q %> - Google Películas</title>
     <link rel="stylesheet" href="/app.css">
 </head>
-<body>
-    <header>
-        <h1>Buscar pelicula</h1>
-        <nav>
-            <a href="/">Inicio</a> | <a href="/search">Buscar</a>
-        </nav>
-    </header>
+<body class="results-page">
+    <%- include("partials/header", { q: q }) %>
 
-    <!-- formulario para buscar -->
-    <form action="/search" method="POST">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" value="<%= busqueda %>">
-        <button type="submit">Buscar</button>
-    </form>
+    <main class="results">
 
-    <% if(results !== null){ %>
-        <h2>Resultados</h2>
-        <% if(results.length == 0){ %>
-            <p>No se han encontrado resultados</p>
-        <% } else { %>
-            <ul>
-                <% results.forEach(function(r){ %>
-                    <li><a href="/film/<%= encodeURIComponent(r.titulo) %>"><%= r.titulo %></a> (<%= r.info.Year %>)</li>
-                <% }) %>
-            </ul>
-        <% } %>
-    <% } %>
+        <p class="results-count">
+            Resultados para <strong>"<%= q %>"</strong>:
+            <%= results.length %> película<%= results.length === 1 ? "" : "s" %>
+        </p>
+
+
+        <% results.forEach(function(r){ %>
+            <article class="result">
+                <h2>
+                    <a href="/film/<%= encodeURIComponent(r.titulo) %>"><%= r.info.Title %></a>
+                </h2>
+                <p class="result-url">/film/<%= encodeURIComponent(r.titulo) %></p>
+                <p class="result-meta">
+                    <strong>Año:</strong> <%= r.info.Year %> ·
+                    <strong>Género:</strong> <%= r.info.Genre %> ·
+                    <strong>Valoración:</strong> <%= r.info.imdbRating %>/10
+                </p>
+                <p class="result-plot"><%= r.info.Plot %></p>
+
+                <div class="gallery">
+                    <% r.info.Images.forEach(function(img, i){ %>
+                        <img src="<%= img %>" alt="Imagen <%= i + 1 %> de <%= r.info.Title %>" loading="lazy">
+                    <% }) %>
+                </div>
+            </article>
+        <% }) %>
+    </main>
 </body>
 </html>
